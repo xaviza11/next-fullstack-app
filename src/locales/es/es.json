@@ -1,0 +1,22 @@
+{
+    "login.singin": "Iniciar Sessión",
+    "login.email": "Email",
+    "login.password": "Contraseña",
+    "login.input.email": "Introduce tu Email",
+    "login.input.password": "Introduce tu contraseña",
+    "login.button.singin": "Entrar",
+
+    "register.signup": "Registrarse",
+    "register.fullName": "Nombre Completo",
+    "register.password": "Contraseña",
+    "register.email": "Email",
+    "register.input.fullName": "Introduce tu nombre",
+    "register.input.email": "Introduce tu Email",
+    "register.input.password": "Introduce tu contraseña",
+    "register.button.signup": "Registrarme",
+
+    "navbar.about": "acerca de",
+    "navbar.login": "Iniciar Sessión",
+    "navbar.register": "Registrarme"
+
+}
