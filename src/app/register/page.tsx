@@ -15,6 +15,7 @@ function Signup() {
   const isAlertOpen = useSelector((state:{isAlertOpen:any}) => state.isAlertOpen)
 
   const router = useRouter();
+
   const intl = useIntl()
   const dispatch = useDispatch()
 

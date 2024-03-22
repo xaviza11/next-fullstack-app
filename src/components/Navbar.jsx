@@ -15,12 +15,16 @@ function Navbar() {
         </Link>
 
         <ul className="flex gap-x-2">
+        {!session && 
           <li className="bg-indigo-500 px-3 py-1">
             <Link href="/">{intl.formatMessage({ id: 'navbar.login' })}</Link>
-          </li>
+          </li>}
+    
+          {!session && 
           <li className="bg-indigo-700 px-3 py-1">
             <Link href="/register">{intl.formatMessage({ id: 'navbar.register' })}</Link>
           </li>
+          }
           <li className="px-3 py-1">
             <Link href="/about">{intl.formatMessage({ id: 'navbar.about' })}</Link>
           </li>

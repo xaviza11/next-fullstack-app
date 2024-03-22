@@ -7,6 +7,7 @@ import {useIntl} from 'react-intl'
 import CustomAlert from "@/components/CustomAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAlert } from "../../../store/actions";
+import { useSession } from "next-auth/react";
 
 function Signin() {
   const [messageAlert, setMessageAlert] = useState<string>('none');
@@ -16,6 +17,9 @@ function Signin() {
   const intl = useIntl()
 
   const isAlertOpen = useSelector((state:{isAlertOpen:any}) => state.isAlertOpen)
+
+  const { data: session } = useSession();
+  if(session) return router.push("/")
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

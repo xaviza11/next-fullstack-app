@@ -3,6 +3,7 @@ import User from "@/models/user";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import { authorize } from "./authorize";
 
 interface UserToken {
   fullname: string;
@@ -19,23 +20,20 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        await connectDB();
-        const userFound = await User.findOne({
-          email: credentials?.email,
-        }).select("+password");
-
-        if (!userFound) throw new Error("Invalid credentials");
-
-        const passwordMatch = await bcrypt.compare(
-          credentials!.password,
-          userFound.password
-        );
-
-        if (!passwordMatch) throw new Error("Invalid credentials");
-
-        console.log(userFound);
-
-        return userFound;
+        if (credentials) {
+          try {
+            const response = await authorize(credentials);
+            if (response.status === 200) {
+              return response.userFound;
+            } else {
+              throw new Error(response.message);
+            }
+          } catch (error:any) {
+            throw new Error(error.message);
+          }
+        } else {
+          throw new Error('Credentials not provided');
+        }
       },
     }),
   ],
