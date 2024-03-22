@@ -5,21 +5,8 @@ import "@testing-library/jest-dom";
 import Providers from "@/app/Providers";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
-import { http, HttpResponse } from "msw";
-import { setupServer } from "msw/node";
 
 jest.mock("next/navigation");
-
-const server = setupServer(
-  http.post("/api/auth/signup", () => {
-    return HttpResponse.json([{ success: true }]);
-  })
-);
-
-beforeAll(() => server.listen());
-afterEach(() => {
-  server.resetHandlers();
-});
 
 fetchMock.mockResponseOnce(JSON.stringify({ data: "example" }));
 
@@ -80,5 +67,3 @@ it("open alert page when password is not valid and status equals warning", async
     });
   });
 });
-
-afterAll(() => server.close());

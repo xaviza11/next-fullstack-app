@@ -13,7 +13,7 @@ export function validateEmail(email) {
   }
 
   export function validateName(name) {
-    if(name.length < 2) return { success: false, message: "Name must have at least two character" }
+    if(name.length < 2) return { success: false, message: "Name must have at least two characters" }
     return { success: true, message: "Name is valid" };
   }
   
