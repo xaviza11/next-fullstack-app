@@ -4,6 +4,11 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
+interface UserToken {
+  fullname: string;
+  email: string
+}
+
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
@@ -42,7 +47,14 @@ const handler = NextAuth({
   },
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.user = user;
+      if (user) {
+        const userData = user as any;
+        const userToken: UserToken = {
+          fullname: userData.fullname,
+          email: userData.email
+        };
+        token.user = userToken;
+      }
       return token;
     },
     async session({ session, token }) {
