@@ -8,6 +8,7 @@ import { validateEmail, validatePassword, validateName } from "../utils/regex";
 import CustomAlert from "@/components/CustomAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAlert } from "../../../store/actions";
+import routerLanguage from "../api/utils/routerLanguage";
 
 function Signup() {
   const [messageAlert, setMessageAlert] = useState<string>('none');
@@ -28,9 +29,11 @@ function Signup() {
       const password = formData.get("password")
       const fullname = formData.get("fullname")
 
-      const isValidEmail = validateEmail(email)
-      const isValidPassword = validatePassword(password)
-      const isValidName = validateName(fullname)
+      const language = routerLanguage( intl.formatMessage({ id: "currentLanguage" }))
+
+      const isValidEmail = validateEmail(email, language)
+      const isValidPassword = validatePassword(password, language)
+      const isValidName = validateName(fullname, language)
 
       if(!isValidEmail.success){
         setMessageAlert(isValidEmail.message)

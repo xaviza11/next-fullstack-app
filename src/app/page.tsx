@@ -4,7 +4,7 @@ function HomePage() {
   // });
   // console.log(session, status);
 
-  return <div>HomePage</div>;
+  return <div id="homePage">HomePage</div>;
 }
 
 export default HomePage;
