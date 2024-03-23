@@ -57,12 +57,14 @@ function Signup() {
         email: formData.get("email"),
         password: formData.get("password"),
         fullname: formData.get("fullname"),
+        language: intl.formatMessage({ id: 'currentLanguage' })
       });
 
       const res = await signIn("credentials", {
         email: signupResponse.data.email,
         password: formData.get("password"),
         redirect: false,
+        language: intl.formatMessage({ id: 'currentLanguage' })
       });
 
       if (res?.ok) return router.push("/dashboard/profile");

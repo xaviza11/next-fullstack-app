@@ -1,0 +1,15 @@
+ {
+
+        "userNotExist": "Usuario no existe",
+        "userRegister": "Usuario registrado correctamente",
+        "userAlreadyExist": "Usuario ya existe",
+        "invalidEmail": "Formato de correo electrónico inválido. Por favor, ingresa un correo electrónico válido.",
+        "passwordBadLength": "La contraseña debe tener al menos 8 caracteres.",
+        "passwordOneLowerCase": "La contraseña debe contener al menos una letra minúscula.",
+        "passwordOneUpperCase": "La contraseña debe contener al menos una letra mayúscula.",
+        "passwordOneNumber": "La contraseña debe contener al menos un número.",
+        "nameOneCharacter": "El nombre debe tener al menos dos caracteres",
+        "validName": "Nombre válido",
+        "'wrongPassword'": "La contraseña es incorrecta",
+        "authSuccess": "Autenticación exitosa"
+ }

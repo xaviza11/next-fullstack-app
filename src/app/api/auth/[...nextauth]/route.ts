@@ -4,6 +4,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { authorize } from "./authorize";
+import { useIntl } from 'react-intl';
 
 interface UserToken {
   fullname: string;
@@ -18,6 +19,7 @@ const handler = NextAuth({
       credentials: {
         email: { label: "Email", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
+        language: {label: "Language", type: "text"}
       },
       async authorize(credentials) {
         if (credentials) {

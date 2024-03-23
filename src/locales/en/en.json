@@ -1,3 +1,23 @@
 {
-    "login.singin": "Singin"
+    "currentLanguage": "en",
+
+    "login.signin": "Sign In",
+    "login.email": "Email",
+    "login.password": "Password",
+    "login.input.email": "Enter your Email",
+    "login.input.password": "Enter your Password",
+    "login.button.signin": "Log In",
+
+    "register.signup": "Sign Up",
+    "register.fullName": "Full Name",
+    "register.password": "Password",
+    "register.email": "Email",
+    "register.input.fullName": "Enter your Full Name",
+    "register.input.email": "Enter your Email",
+    "register.input.password": "Enter your Password",
+    "register.button.signup": "Register",
+
+    "navbar.about": "About",
+    "navbar.login": "Sign In",
+    "navbar.register": "Register"
 }

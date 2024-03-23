@@ -2,13 +2,17 @@ import { connectDB } from "@/libs/mongodb";
 import User from "@/models/user";
 import bcrypt from "bcryptjs";
 import { validateEmail, validatePassword, validateName } from '@/app/utils/regex';
+import routerLanguage from '../../utils/routerLanguage'
 
-export async function signupService({ fullname, email, password }: { fullname: string, email: string, password: string }) {
+export async function signupService({ fullname, email, password, language }: { fullname: string, email: string, password: string, language: string }) {
   await connectDB();
 
-  const isPasswordValid = validatePassword(password);
-  const isEmailValid = validateEmail(email);
-  const isValidName = validateName(fullname)
+  const languageSelected = await routerLanguage(language)
+  if (languageSelected === undefined) throw {message: "fatal language error", status: 500 }
+
+  const isPasswordValid = validatePassword(password, languageSelected);
+  const isEmailValid = validateEmail(email, languageSelected);
+  const isValidName = validateName(fullname, languageSelected)
 
   if (!isValidName.success) {
     throw { message: isValidName.message, status: 400 };
@@ -24,7 +28,7 @@ export async function signupService({ fullname, email, password }: { fullname: s
 
   const userFound = await User.findOne({ email });
   if (userFound) {
-    throw { message: "Email already exists", status: 409 };
+    throw { message: languageSelected?.backUserAlreadyExist, status: 409 };
   }
 
   const hashedPassword = await bcrypt.hash(password, 12);
@@ -34,6 +38,6 @@ export async function signupService({ fullname, email, password }: { fullname: s
   return {
     status: 201,
     data: { fullname, email, createdAt: savedUser.createdAt, updatedAt: savedUser.updatedAt },
-    message: 'User registered successfully'
+    message: languageSelected?.backUserRegister
   };
 }

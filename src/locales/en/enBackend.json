@@ -1,0 +1,14 @@
+{
+    "userNotExist": "User not exist",
+    "userRegister": "User registered successfully",
+    "userAlreadyExist": "User already exist",
+    "invalidEmail": "Invalid email format. Please enter a valid email address.",
+    "passwordBadLength": "Password must be at least 8 characters long.",
+    "passwordOneLowerCase": "Password must contain at least one lowercase letter.",
+    "passwordOneUpperCase": "Password must contain at least one uppercase letter.",
+    "passwordOneNumber": "Password must contain at least one digit.",
+    "nameOneCharacter": "Name must have at least two characters",
+    "validName": "Name is valid",
+    "'wrongPassword'": "The password is wrong",
+    "authSuccess": "Authentication successful"
+}

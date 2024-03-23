@@ -28,6 +28,7 @@ function Signin() {
       email: formData.get("email"),
       password: formData.get("password"),
       redirect: false,
+      language: intl.formatMessage({ id: 'currentLanguage' })
     });
 
     if (res?.error){
@@ -47,7 +48,7 @@ function Signin() {
         className="bg-neutral-950 px-8 py-10 w-3/12"
       >
         {isAlertOpen === true && <CustomAlert status={statusAlert} message={messageAlert}></CustomAlert>}
-        <h1 className="text-4xl font-bold mb-7">{intl.formatMessage({ id: 'login.singin' })}</h1>
+        <h1 className="text-4xl font-bold mb-7">{intl.formatMessage({ id: 'login.signin' })}</h1>
 
         <label className="text-slate-300">{intl.formatMessage({ id: 'login.email' })}</label>
         <input
@@ -66,7 +67,7 @@ function Signin() {
         />
 
         <button className="bg-blue-500 text-white px-4 py-2 block w-full mt-4">
-        {intl.formatMessage({ id: 'login.button.singin' })}
+        {intl.formatMessage({ id: 'login.button.signin' })}
         </button>
       </form>
     </div>

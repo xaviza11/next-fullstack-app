@@ -1,22 +1,23 @@
 {
-    "login.singin": "Iniciar Sessión",
-    "login.email": "Email",
+    "currentLanguage": "es",
+
+    "login.signin": "Iniciar Sesión",
+    "login.email": "Correo Electrónico",
     "login.password": "Contraseña",
-    "login.input.email": "Introduce tu Email",
-    "login.input.password": "Introduce tu contraseña",
-    "login.button.singin": "Entrar",
+    "login.input.email": "Introduce tu Correo Electrónico",
+    "login.input.password": "Introduce tu Contraseña",
+    "login.button.signin": "Iniciar Sesión",
 
     "register.signup": "Registrarse",
     "register.fullName": "Nombre Completo",
     "register.password": "Contraseña",
-    "register.email": "Email",
-    "register.input.fullName": "Introduce tu nombre",
-    "register.input.email": "Introduce tu Email",
-    "register.input.password": "Introduce tu contraseña",
-    "register.button.signup": "Registrarme",
+    "register.email": "Correo Electrónico",
+    "register.input.fullName": "Introduce tu Nombre Completo",
+    "register.input.email": "Introduce tu Correo Electrónico",
+    "register.input.password": "Introduce tu Contraseña",
+    "register.button.signup": "Registrarse",
 
-    "navbar.about": "acerca de",
-    "navbar.login": "Iniciar Sessión",
-    "navbar.register": "Registrarme"
-
+    "navbar.about": "Acerca de",
+    "navbar.login": "Iniciar Sesión",
+    "navbar.register": "Registrarse"
 }

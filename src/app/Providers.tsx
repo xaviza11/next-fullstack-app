@@ -11,5 +11,5 @@ interface Props {
 }
 
 export default function Providers({ children }: Props) {
-  return <SessionProvider><Provider store={store}><IntlProvider locale="es" messages={es}>{children}</IntlProvider></Provider></SessionProvider>;
+  return <SessionProvider><Provider store={store}><IntlProvider locale="en" messages={en}>{children}</IntlProvider></Provider></SessionProvider>;
 }
