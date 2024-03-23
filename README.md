@@ -18,8 +18,4 @@ This project it's created for learn next and improve my testing skills.
 
 ## Test
 
-For run tests:
-```bash
- npm run test
-```
-Tests work whit jest and react testing library.
+The test app is in oder repository called next-fullstack-app-E2E-testing-app
