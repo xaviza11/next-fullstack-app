@@ -10,5 +10,9 @@
     "nameOneCharacter": "Name must have at least two characters",
     "validName": "Name is valid",
     "'wrongPassword'": "The password is wrong",
-    "authSuccess": "Authentication successful"
+    "authSuccess": "Authentication successful",
+    "passwordValid": "Password is valid",
+    "emailValid": "Email is valid",
+    "passwordNoSpaces": "The password can not contain spaces",
+    "passwordNotSpecial": "Password can not contain special characters"
 }

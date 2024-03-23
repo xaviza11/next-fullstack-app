@@ -18,6 +18,7 @@ const CustomAlert = ({ status, message }: CustomAlert) => {
   };
 
   useEffect(() => {
+    console.log(status)
     setTimeout(() => {
       dispatch(toggleAlert(false));
     }, 2000);
@@ -28,8 +29,9 @@ const CustomAlert = ({ status, message }: CustomAlert) => {
   const alertClassNames = `${backgroundColors[status]} ${textColor} fixed top-1/4 left-1/2 h-1/2 transform -translate-x-1/2 z-50 w-11/12 max-w-lg p-4 rounded-md text-center text-sm font-bold shadow-lg`;
 
   return (
-    <div data-testid="alertComp" className={alertClassNames} role="alert">
-      {message}
+    <div id="alertComponent" className={alertClassNames} role="alert">
+      <h3>{status}</h3>
+      <h3>{message}</h3>
     </div>
   );
 };
