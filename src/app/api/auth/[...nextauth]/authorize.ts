@@ -32,7 +32,7 @@ export async function authorize(credentials:Credentials) {
     email: credentials?.email,
   }).select("+password");
 
-  if (!userFound) throw {status: 400, message: languageSelected.userNotExist};
+  if (!userFound) throw {status: 409, message: languageSelected.userNotExist};
 
   const passwordMatch = await bcrypt.compare(
     credentials!.password,

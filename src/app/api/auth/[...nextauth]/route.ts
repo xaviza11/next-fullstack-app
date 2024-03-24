@@ -28,7 +28,7 @@ const handler = NextAuth({
             if (response.status === 200) {
               return response.userFound;
             } else {
-              throw new Error(response.message);
+              throw new Error(response.message)
             }
           } catch (error:any) {
             throw new Error(error.message);

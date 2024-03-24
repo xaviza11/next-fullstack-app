@@ -66,7 +66,7 @@ function Signin() {
       dispatch(toggleAlert(true));
     }
 
-    if (res?.ok) return router.push("/dashboard/profile");
+    if (res?.ok) return router.push("/");
   };
 
   return (

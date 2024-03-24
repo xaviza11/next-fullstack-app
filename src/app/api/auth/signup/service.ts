@@ -28,7 +28,7 @@ export async function signupService({ fullname, email, password, language }: { f
 
   const userFound = await User.findOne({ email });
   if (userFound) {
-    throw { message: languageSelected?.backUserAlreadyExist, status: 409 };
+    throw { message: languageSelected?.userAlreadyExist, status: 409 };
   }
 
   const hashedPassword = await bcrypt.hash(password, 12);
