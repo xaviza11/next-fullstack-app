@@ -115,7 +115,7 @@ function Signup() {
           name="password"
         />
 
-        <button className="bg-blue-500 text-white px-4 py-2 block w-full mt-4">
+        <button id="button register" className="bg-blue-500 text-white px-4 py-2 block w-full mt-4">
         {intl.formatMessage({ id: 'register.button.signup' })}
         </button>
       </form>
