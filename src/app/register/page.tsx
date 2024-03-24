@@ -84,9 +84,9 @@ function Signup() {
 
   return (
     <div className="justify-center h-[calc(100vh-4rem)] flex items-center">
-      <form onSubmit={handleSubmit} className="bg-neutral-950 px-8 py-10 w-3/12">
+      <form id="formRegister" onSubmit={handleSubmit} className="bg-neutral-950 px-8 py-10 w-3/12">
         {isAlertOpen === true && <CustomAlert status={statusAlert} message={messageAlert}></CustomAlert>}
-        <h1 className="text-4xl font-bold mb-7">{intl.formatMessage({ id: 'register.signup' })}</h1>
+        <h2 className="text-4xl font-bold mb-7">{intl.formatMessage({ id: 'register.signup' })}</h2>
 
         <label className="text-slate-300">{intl.formatMessage({ id: 'register.fullName' })}</label>
         <input
