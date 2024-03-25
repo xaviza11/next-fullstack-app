@@ -15,7 +15,7 @@ export async function signupService({ fullname, email, password, language }: { f
   const isValidName = validateName(fullname, languageSelected)
 
   if (!isValidName.success) {
-    throw { message: isValidName.message, status: 400 };
+    throw { message: isValidName.message, status: 400};
   }
 
   if (!isPasswordValid.success) {
@@ -38,6 +38,6 @@ export async function signupService({ fullname, email, password, language }: { f
   return {
     status: 201,
     data: { fullname, email, createdAt: savedUser.createdAt, updatedAt: savedUser.updatedAt },
-    message: languageSelected?.backUserRegister
+    message: languageSelected?.userRegistered
   };
 }
