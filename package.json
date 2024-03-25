@@ -10,6 +10,10 @@
     "test": "cross-env NODE_ENV=test next dev"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/material": "^5.15.14",
     "autoprefixer": "10.4.14",
     "bcryptjs": "^2.4.3",
     "mongoose": "^7.2.3",
