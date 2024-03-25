@@ -16,19 +16,19 @@ function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav id="navbar" className="bg-gray-900 p-4">
+    <nav id="navbar" className="bg-black p-4">
       <div className="container mx-auto flex justify-between">
         <Link href="/">
-          <h1 className="font-bold text-xl cursor-pointer">NextAuth</h1>
+          <h1 className="font-bold text-xl cursor-pointer">SocialEv</h1>
         </Link>
 
         <ul className="flex gap-x-2">
           {!session && (
             <>
-              <li className="bg-indigo-500 px-3 py-1">
+              <li className="bg-blue-500 px-3 py-1">
                 <Link href="/">{intl.formatMessage({ id: 'navbar.login' })}</Link>
               </li>
-              <li className="bg-indigo-700 px-3 py-1">
+              <li className="bg-pink-500 px-3 py-1">
                 <Link href="/register">{intl.formatMessage({ id: 'navbar.register' })}</Link>
               </li>
             </>

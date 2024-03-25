@@ -10,6 +10,7 @@ import { toggleAlert } from "../../../store/actions";
 import { useSession } from "next-auth/react";
 import { validateEmail, validatePassword } from "../utils/regex";
 import routerLanguage from "../api/utils/routerLanguage";
+import { Button, Box, TextField } from "@mui/material";
 
 function Signin() {
   const [messageAlert, setMessageAlert] = useState<string>("none");
@@ -31,26 +32,28 @@ function Signin() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    const email = formData.get("email")
-    const password = formData.get("password")
+    const email = formData.get("email");
+    const password = formData.get("password");
 
-    const language = routerLanguage( intl.formatMessage({ id: "currentLanguage" }))
-  
-    const isValidEmail = validateEmail(email, language)
-    const isValidPassword = validatePassword(password, language)
-  
-    if(!isValidEmail.success){
-      setMessageAlert(isValidEmail.message)
-      setStatusAlert('warning')
-      dispatch(toggleAlert(true))
-      return
+    const language = routerLanguage(
+      intl.formatMessage({ id: "currentLanguage" })
+    );
+
+    const isValidEmail = validateEmail(email, language);
+    const isValidPassword = validatePassword(password, language);
+
+    if (!isValidEmail.success) {
+      setMessageAlert(isValidEmail.message);
+      setStatusAlert("warning");
+      dispatch(toggleAlert(true));
+      return;
     }
-  
-    if(!isValidPassword.success){
-      setMessageAlert(isValidPassword.message)
-      setStatusAlert('warning')
-      dispatch(toggleAlert(true))
-      return
+
+    if (!isValidPassword.success) {
+      setMessageAlert(isValidPassword.message);
+      setStatusAlert("warning");
+      dispatch(toggleAlert(true));
+      return;
     }
 
     const res = await signIn("credentials", {
@@ -70,49 +73,106 @@ function Signin() {
   };
 
   return (
-    <div className="justify-center h-[calc(100vh-4rem)] flex items-center">
-      <form
-        id="formLogin"
-        onSubmit={handleSubmit}
-        className="bg-neutral-950 px-8 py-10 w-3/12"
-      >
+    <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-pink-500 to-blue-500">
+      <div className="border border-blue-400 rounded-xl">
         {isAlertOpen === true && (
           <CustomAlert
             status={statusAlert}
             message={messageAlert}
           ></CustomAlert>
         )}
-        <h1 className="text-4xl font-bold mb-7">
-          {intl.formatMessage({ id: "login.signin" })}
-        </h1>
-
-        <label className="text-slate-300">
-          {intl.formatMessage({ id: "login.email" })}
-        </label>
-        <input
-          type="email"
-          placeholder={intl.formatMessage({ id: "login.input.email" })}
-          className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
-          name="email"
-        />
-
-        <label className="text-slate-300">
-          {intl.formatMessage({ id: "login.password" })}
-        </label>
-        <input
-          type="password"
-          placeholder={intl.formatMessage({ id: "login.input.password" })}
-          className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
-          name="password"
-        />
-
-        <button
-          id="buttonLogin"
-          className="bg-blue-500 text-white px-4 py-2 block w-full mt-4"
+        <Box
+          id="formLogin"
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            "& > :not(style)": { m: 2, width: "25ch" },
+            color: "white",
+            boxShadow: "0px 4px 20px teal",
+            "&:hover": {
+              color: "purple",
+              borderColor: "purple",
+              boxShadow: "0px 4px 40px teal",
+            },
+          }}
+          noValidate
+          autoComplete="off"
+          className="flex flex-col justify-items-center items-center bg-white bg-opacity-25 py-10 rounded-xl w-[20rem]"
         >
-          {intl.formatMessage({ id: "login.button.signin" })}
-        </button>
-      </form>
+          <h2 className="text-4xl font-bold text-white text-center">
+            {intl.formatMessage({ id: "login.signin" })}
+          </h2>
+          <TextField
+            size="small"
+            type="email"
+            id="email-input"
+            label={intl.formatMessage({ id: "login.input.email" })}
+            name="email"
+            variant="standard"
+            fullWidth
+            InputLabelProps={{
+              style: { color: "white" },
+            }}
+            InputProps={{
+              style: { color: "white" },
+            }}
+            sx={{
+              "& label.Mui-focused": {
+                color: "white",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+            }}
+          />
+          <TextField
+            type="password"
+            size="small"
+            id="password-input"
+            label={intl.formatMessage({ id: "login.input.password" })}
+            name="password"
+            variant="standard"
+            fullWidth
+            InputLabelProps={{
+              style: { color: "white" },
+            }}
+            InputProps={{
+              style: { color: "white" },
+            }}
+            sx={{
+              "& .Mui-focused": {
+                color: "white",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+            }}
+          />
+
+          <Button
+            id="buttonLogin"
+            type="submit"
+            size="large"
+            variant="outlined"
+            sx={{
+              color: "white",
+              borderColor: "white",
+              "&:hover": {
+                color: "white",
+                borderColor: "white",
+              },
+            }}
+          >
+            {intl.formatMessage({ id: "login.button.signin" })}
+          </Button>
+        </Box>
+      </div>
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <Navbar />
-          <div className="container mx-auto">{children}</div>
+          <div className="w-screen h-[90vh]">{children}</div>
         </Providers>
       </body>
     </html>

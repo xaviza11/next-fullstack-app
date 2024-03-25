@@ -9,6 +9,7 @@ import CustomAlert from "@/components/CustomAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleAlert } from "../../../store/actions";
 import routerLanguage from "../api/utils/routerLanguage";
+import { Box, TextField, Button } from "@mui/material";
 
 function Signup() {
   const [messageAlert, setMessageAlert] = useState<string>("none");
@@ -75,15 +76,15 @@ function Signup() {
         redirect: false,
         language: intl.formatMessage({ id: "currentLanguage" }),
       });
-  
+
       if (res?.ok) return router.push("/");
-  
+
       if (res?.error) {
         setStatusAlert("warning");
         setMessageAlert(res.response.data.message);
         dispatch(toggleAlert(true));
       }
-    } catch (error:any) {
+    } catch (error: any) {
       if (error.response.data.message) {
         setStatusAlert("warning");
         setMessageAlert(error.response.data.message);
@@ -93,62 +94,140 @@ function Signup() {
   };
 
   return (
-    <div className="justify-center h-[calc(100vh-4rem)] flex items-center">
-      <form
-        id="formRegister"
-        onSubmit={handleSubmit}
-        className="bg-neutral-950 px-8 py-10 w-3/12"
-      >
+    <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-pink-500 to-blue-500">
+      <div className="border border-blue-400 rounded-xl">
         {isAlertOpen === true && (
           <CustomAlert
             status={statusAlert}
             message={messageAlert}
           ></CustomAlert>
         )}
-        <h2 className="text-4xl font-bold mb-7">
-          {intl.formatMessage({ id: "register.signup" })}
-        </h2>
-
-        <label className="text-slate-300">
-          {intl.formatMessage({ id: "register.fullName" })}
-        </label>
-        <input
-          data-testid="fullNameInput"
-          type="text"
-          placeholder={intl.formatMessage({ id: "register.input.fullName" })}
-          className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
-          name="fullname"
-        />
-
-        <label className="text-slate-300">
-          {intl.formatMessage({ id: "register.email" })}
-        </label>
-        <input
-          data-testid="emailInput"
-          type="email"
-          placeholder={intl.formatMessage({ id: "register.input.email" })}
-          className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
-          name="email"
-        />
-
-        <label className="text-slate-300">
-          {intl.formatMessage({ id: "register.password" })}
-        </label>
-        <input
-          data-testid="passwordInput"
-          type="password"
-          placeholder={intl.formatMessage({ id: "register.input.password" })}
-          className="bg-zinc-800 px-4 py-2 block mb-2 w-full"
-          name="password"
-        />
-
-        <button
-          id="buttonRegister"
-          className="bg-blue-500 text-white px-4 py-2 block w-full mt-4"
+        {isAlertOpen === true && (
+          <CustomAlert
+            status={statusAlert}
+            message={messageAlert}
+          ></CustomAlert>
+        )}
+        <Box
+          id="formRegister"
+          component="form"
+          onSubmit={handleSubmit}
+          sx={{
+            "& > :not(style)": { m: 2, width: "25ch" },
+            color: "white",
+            boxShadow: "0px 4px 20px teal",
+            "&:hover": {
+              color: "purple",
+              borderColor: "purple",
+              boxShadow: "0px 4px 40px teal",
+            },
+          }}
+          noValidate
+          autoComplete="off"
+          className="flex flex-col justify-items-center items-center bg-white bg-opacity-25 py-10 rounded-xl w-[20rem]"
         >
-          {intl.formatMessage({ id: "register.button.signup" })}
-        </button>
-      </form>
+
+          <h2 className="text-4xl font-bold text-white text-center">
+            {intl.formatMessage({ id: "register.signup" })}
+          </h2>
+
+          <TextField
+            size="small"
+            type="text"
+            id="email-input"
+            label={intl.formatMessage({ id: "register.input.fullName" })}
+            name="fullname"
+            variant="standard"
+            fullWidth
+            InputLabelProps={{
+              style: { color: "white" },
+            }}
+            InputProps={{
+              style: { color: "white" },
+            }}
+            sx={{
+              "& label.Mui-focused": {
+                color: "white",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+            }}
+          />
+
+<TextField
+            size="small"
+            type="email"
+            id="email-input"
+            label={intl.formatMessage({ id: "register.input.email" })}
+            name="email"
+            variant="standard"
+            fullWidth
+            InputLabelProps={{
+              style: { color: "white" },
+            }}
+            InputProps={{
+              style: { color: "white" },
+            }}
+            sx={{
+              "& label.Mui-focused": {
+                color: "white",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+            }}
+          />
+
+<TextField
+            type="password"
+            size="small"
+            id="password-input"
+            label={intl.formatMessage({ id: "register.input.password" })}
+            name="password"
+            variant="standard"
+            fullWidth
+            InputLabelProps={{
+              style: { color: "white" },
+            }}
+            InputProps={{
+              style: { color: "white" },
+            }}
+            sx={{
+              "& .Mui-focused": {
+                color: "white",
+              },
+              "& .MuiInput-underline:after": {
+                borderBottomColor: "white",
+              },
+              "& .MuiInput-underline:before": {
+                borderBottomColor: "white",
+              },
+            }}
+          />
+
+          <Button
+            id="buttonRegister"
+            type="submit"
+            size="large"
+            variant="outlined"
+            sx={{
+              color: "white",
+              borderColor: "white",
+              "&:hover": {
+                color: "white",
+                borderColor: "white",
+              },
+            }}
+          > {intl.formatMessage({ id: "register.button.signup" })}</Button>
+        </Box>
+      </div>
     </div>
   );
 }
