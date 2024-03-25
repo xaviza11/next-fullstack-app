@@ -85,9 +85,13 @@ function Signup() {
         dispatch(toggleAlert(true));
       }
     } catch (error: any) {
-      if (error.response.data.message) {
+      if (error?.response?.data?.message) {
         setStatusAlert("warning");
         setMessageAlert(error.response.data.message);
+        dispatch(toggleAlert(true));
+      } else {
+        setStatusAlert("warning");
+        setMessageAlert(error.message);
         dispatch(toggleAlert(true));
       }
     }
