@@ -1,7 +1,7 @@
 {
     "userNotExist": "User not exist",
-    "userRegister": "User registered successfully",
-    "userAlreadyExist": "User already exist",
+    "userRegistered": "User registered successfully",
+    "userAlreadyExist": "User already exists",
     "invalidEmail": "Invalid email format. Please enter a valid email address.",
     "passwordBadLength": "Password must be at least 8 characters long.",
     "passwordOneLowerCase": "Password must contain at least one lowercase letter.",
@@ -14,5 +14,6 @@
     "passwordValid": "Password is valid",
     "emailValid": "Email is valid",
     "passwordNoSpaces": "The password can not contain spaces",
-    "passwordNotSpecial": "Password can not contain special characters"
+    "passwordNotSpecial": "Password can not contain special characters",
+    "userDeletedSuccessfully": "User has been deleted"
 }
