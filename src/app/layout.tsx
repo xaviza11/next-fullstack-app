@@ -1,6 +1,5 @@
 
 import Providers from "./Providers";
-import Navbar from "../components/Navbar";
 import "./globals.css";
 
 export const metadata = {
@@ -15,10 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="w-screen h-screen">
         <Providers>
-          <Navbar />
-          <div className="w-screen h-[90vh]">{children}</div>
+          {children}
         </Providers>
       </body>
     </html>

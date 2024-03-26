@@ -16,34 +16,34 @@ function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav id="navbar" className="bg-black p-4">
-      <div className="container mx-auto flex justify-between">
-        <Link href="/">
-          <h1 className="font-bold text-xl cursor-pointer">SocialEv</h1>
-        </Link>
+<nav id="navbar" className="bg-black p-4">
+  <div className="container mx-auto flex justify-between">
+    <Link href="/">
+      <h1 className="font-bold text-xl cursor-pointer sm:text-lg">FlightSimWay</h1>
+    </Link>
 
-        <ul className="flex gap-x-2">
-          {!session && (
-            <>
-              <li className="bg-blue-500 px-3 py-1">
-                <Link href="/">{intl.formatMessage({ id: 'navbar.login' })}</Link>
-              </li>
-              <li className="bg-pink-500 px-3 py-1">
-                <Link href="/register">{intl.formatMessage({ id: 'navbar.register' })}</Link>
-              </li>
-            </>
-          )}
-          <li className="px-3 py-1">
-            <Link href="/about">{intl.formatMessage({ id: 'navbar.about' })}</Link>
+    <ul className="flex gap-x-2">
+      {!session && (
+        <>
+          <li className="bg-orange-500 px-3 py-1 text-sm sm:text-xs">
+            <Link href="/">{intl.formatMessage({ id: 'navbar.login' })}</Link>
           </li>
-          {session && (
-            <li className="px-3 py-1">
-              <Link href="/dashboard/profile">{(session.user as unknown as Session['user']).fullname}</Link>
-            </li>
-          )}
-        </ul>
-      </div>
-    </nav>
+          <li className="bg-blue-500 px-3 py-1 text-sm sm:text-xs">
+            <Link href="/register">{intl.formatMessage({ id: 'navbar.register' })}</Link>
+          </li>
+        </>
+      )}
+      <li className="px-3 py-1 text-sm sm:text-xs">
+        <Link href="/about">{intl.formatMessage({ id: 'navbar.about' })}</Link>
+      </li>
+      {session && (
+        <li className="px-3 py-1 text-sm sm:text-xs">
+          <Link href="/dashboard/profile">{(session.user as unknown as Session['user']).fullname}</Link>
+        </li>
+      )}
+    </ul>
+  </div>
+</nav>
   );
 }
 
