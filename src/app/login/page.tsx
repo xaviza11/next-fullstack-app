@@ -1,7 +1,6 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import { FormEvent, useState } from "react";
-import Image from "next/image";
 import { AxiosError } from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -76,16 +75,7 @@ function Signin() {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <Image
-        src={background}
-        alt="background"
-        layout="fill"
-        objectFit="cover"
-        className="z-0"
-      />
       <div className="z-10 w-full h-full flex flex-col">
-        <Navbar />
         {isAlertOpen && (
           <CustomAlert
             status={statusAlert}
@@ -162,9 +152,10 @@ function Signin() {
                 "& .Mui-focused": { color: "black" },
                 "& .MuiInput-underline:after": { borderBottomColor: "black" },
                 "& .MuiInput-underline:before": { borderBottomColor: "black" },
-                width: "17vw", height: "10vh",
+                width: "17vw", height: "10vh", marginTop: 2,
                 "@media (orientation: portrait)": { 
-                  width: "40vw", 
+                  width: "40vw",
+                  marginTop: 0
                 }
               }}
             />
@@ -174,7 +165,6 @@ function Signin() {
               size="small"
               variant="outlined"
               sx={{
-                marginTop: "5vh",
                 color: "white",
                 borderColor: 'green',
                 borderRadius: 20,
@@ -191,9 +181,13 @@ function Signin() {
                   sm: 10,
                   md: 15
                 },
+                marginTop: {
+                  xs: 0,
+                  sm: 3,
+                  md: 3
+                },
                 "@media (orientation: portrait)": { 
                   width: "30vw", 
-                  marginTop: "2vh",
                   fontSize: 10
                 }
               }}
@@ -203,7 +197,6 @@ function Signin() {
           </Box>
         </div>
       </div>
-    </div>
   );
 }
 

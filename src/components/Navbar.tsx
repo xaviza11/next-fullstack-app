@@ -16,7 +16,7 @@ function Navbar() {
   const { data: session } = useSession();
 
   return (
-<nav id="navbar" className="bg-black p-4">
+<nav id="navbar" className="bg-black p-4 w-full z-10">
   <div className="container mx-auto flex justify-between">
     <Link href="/">
       <h1 className="font-bold text-xl cursor-pointer sm:text-lg">FlightSimWay</h1>
