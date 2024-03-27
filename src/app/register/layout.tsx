@@ -7,7 +7,7 @@ interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-const LoginLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+const RegisterLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       <Navbar />
@@ -23,4 +23,4 @@ const LoginLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   );
 };
 
-export default LoginLayout;
+export default RegisterLayout;

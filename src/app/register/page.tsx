@@ -98,40 +98,42 @@ function Signup() {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-pink-500 to-blue-500">
-      <div className="border border-blue-400 rounded-xl">
-        {isAlertOpen === true && (
-          <CustomAlert
-            status={statusAlert}
-            message={messageAlert}
-          ></CustomAlert>
-        )}
-        {isAlertOpen === true && (
-          <CustomAlert
-            status={statusAlert}
-            message={messageAlert}
-          ></CustomAlert>
-        )}
+    <div className="z-10 w-full h-full flex flex-col">
+      {isAlertOpen && (
+        <CustomAlert status={statusAlert} message={messageAlert} />
+      )}
+      <div className="flex items-center justify-center flex-grow">
         <Box
-          id="formRegister"
+          id="formLogin"
+          className="flex flex-col justify-center items-center bg-white bg-opacity-25 py-10 rounded-xl h-[65vh]"
           component="form"
           onSubmit={handleSubmit}
           sx={{
-            "& > :not(style)": { m: 2, width: "25ch" },
-            color: "white",
-            boxShadow: "0px 4px 20px teal",
-            "&:hover": {
-              color: "purple",
-              borderColor: "purple",
-              boxShadow: "0px 4px 40px teal",
+            marginLeft: "50vw",
+            width: "26vw",
+            animation: 'change-shadow 1s ease-in-out infinite',
+            transition: "box-shadow 0.5s ease-in-out",
+            boxShadow: "0px 2px 25px green",
+            "@keyframes change-shadow": {
+              "0%": {
+                boxShadow: "0px 2px 25px green",
+              },
+              "50%": {
+                boxShadow: "0px 2px 35px green",
+              },
+              "100%": {
+                boxShadow: "0px 2px 25px green",
+              },
             },
+            "@media (orientation: portrait)": { 
+              width: "70vw", 
+              marginLeft: 0,
+            }
           }}
           noValidate
           autoComplete="off"
-          className="flex flex-col justify-items-center items-center bg-white bg-opacity-25 py-10 rounded-xl w-[20rem]"
         >
-
-          <h2 className="text-4xl font-bold text-white text-center">
+          <h2 className="text-2xl font-bold text-black text-center mb-0 lg:text-4xl mb-[1vh]">
             {intl.formatMessage({ id: "register.signup" })}
           </h2>
 
@@ -143,26 +145,22 @@ function Signup() {
             name="fullname"
             variant="standard"
             fullWidth
-            InputLabelProps={{
-              style: { color: "white" },
-            }}
-            InputProps={{
-              style: { color: "white" },
-            }}
+            InputLabelProps={{ style: { color: "black" } }}
+            InputProps={{ style: { color: "black" } }}
             sx={{
-              "& label.Mui-focused": {
-                color: "white",
-              },
-              "& .MuiInput-underline:after": {
-                borderBottomColor: "white",
-              },
-              "& .MuiInput-underline:before": {
-                borderBottomColor: "white",
-              },
+              width: "17vw",
+              height: "10vh",
+              "& .Mui-focused": { color: "black" },
+              "& .MuiInput-underline:after": { borderBottomColor: "black" },
+              "& .MuiInput-underline:before": { borderBottomColor: "black" },
+              "@media (orientation: portrait)": { 
+                width: "40vw",
+                marginTop: 0
+              }
             }}
           />
 
-<TextField
+          <TextField
             size="small"
             type="email"
             id="email-input"
@@ -170,26 +168,21 @@ function Signup() {
             name="email"
             variant="standard"
             fullWidth
-            InputLabelProps={{
-              style: { color: "white" },
-            }}
-            InputProps={{
-              style: { color: "white" },
-            }}
+            InputLabelProps={{ style: { color: "black" } }}
+            InputProps={{ style: { color: "black" } }}
             sx={{
-              "& label.Mui-focused": {
-                color: "white",
-              },
-              "& .MuiInput-underline:after": {
-                borderBottomColor: "white",
-              },
-              "& .MuiInput-underline:before": {
-                borderBottomColor: "white",
-              },
+              width: "17vw",
+              height: "10vh",
+              "& label.Mui-focused": { color: "black" },
+              "& .MuiInput-underline:after": { borderBottomColor: "black" },
+              "& .MuiInput-underline:before": { borderBottomColor: "black" },
+              "@media (orientation: portrait)": { 
+                width: "40vw", 
+              }
             }}
           />
 
-<TextField
+          <TextField
             type="password"
             size="small"
             id="password-input"
@@ -197,22 +190,18 @@ function Signup() {
             name="password"
             variant="standard"
             fullWidth
-            InputLabelProps={{
-              style: { color: "white" },
-            }}
-            InputProps={{
-              style: { color: "white" },
-            }}
+            InputLabelProps={{ style: { color: "black" } }}
+            InputProps={{ style: { color: "black" } }}
             sx={{
-              "& .Mui-focused": {
-                color: "white",
-              },
-              "& .MuiInput-underline:after": {
-                borderBottomColor: "white",
-              },
-              "& .MuiInput-underline:before": {
-                borderBottomColor: "white",
-              },
+              width: "17vw",
+              height: "10vh",
+              "& .Mui-focused": { color: "black" },
+              "& .MuiInput-underline:after": { borderBottomColor: "black" },
+              "& .MuiInput-underline:before": { borderBottomColor: "black" },
+              "@media (orientation: portrait)": { 
+                width: "40vw",
+                marginTop: 0
+              }
             }}
           />
 
@@ -221,15 +210,38 @@ function Signup() {
             type="submit"
             size="large"
             variant="outlined"
+            className="bg-green-600 rounded-3xl"
             sx={{
+              width: "10vw",
+              height: "5vh",
               color: "white",
-              borderColor: "white",
+              backgroundColor: "rgb(22 163 74)",
+              borderRadius: 20,
+              borderColor: "transparent",
               "&:hover": {
                 color: "white",
-                borderColor: "white",
+                backgroundColor: 'green',
+                borderColor: 'green',
               },
+               fontSize: {
+                xs: 8, 
+                sm: 10,
+                md: 15,
+              },
+              marginTop: {
+                xs: 0,
+                sm: 3,
+                md: 3
+              },
+              "@media (orientation: portrait)": { 
+                width: "30vw", 
+                fontSize: 10
+              }
             }}
-          > {intl.formatMessage({ id: "register.button.signup" })}</Button>
+          >
+            {" "}
+            {intl.formatMessage({ id: "register.button.signup" })}
+          </Button>
         </Box>
       </div>
     </div>

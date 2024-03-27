@@ -85,27 +85,26 @@ function Signin() {
         <div className="flex items-center justify-center flex-grow">
           <Box
             id="formLogin"
+            className="flex flex-col justify-center items-center bg-white bg-opacity-25 py-10 rounded-xl h-[65vh]"
             component="form"
             onSubmit={handleSubmit}
             sx={{
-              "&:hover": {
-                boxShadow: "0px 2px 35px green",
-              },
-              animation: 'change-shadow 1s ease-in-out',
+              marginLeft: "50vw",
+              width: "26vw",
+              animation: 'change-shadow 1s ease-in-out infinite',
+              transition: "box-shadow 0.5s ease-in-out",
+              boxShadow: "0px 2px 25px green",
               "@keyframes change-shadow": {
                 "0%": {
-                  boxShadow: "0px 2px 25px orange"
+                  boxShadow: "0px 2px 25px green",
+                },
+                "50%": {
+                  boxShadow: "0px 2px 35px green",
                 },
                 "100%": {
-                  boxShadow: "0px 2px 25px green"
+                  boxShadow: "0px 2px 25px green",
                 },
               },
-              color: "white",
-              boxShadow: "0px 2px 25px green",
-              transition: "box-shadow 0.5s ease-in-out",
-              width: "26vw",
-              height: "65vh",
-              marginLeft: "50vw",
               "@media (orientation: portrait)": { 
                 width: "70vw", 
                 marginLeft: 0,
@@ -113,7 +112,6 @@ function Signin() {
             }}
             noValidate
             autoComplete="off"
-            className="flex flex-col justify-center items-center bg-white bg-opacity-25 py-10 rounded-xl"
           >
             <h2 className="text-2xl font-bold text-black text-center mb-0 lg:text-4xl mb-[1vh]">
               {intl.formatMessage({ id: "login.signin" })}
@@ -129,10 +127,11 @@ function Signin() {
               InputLabelProps={{ style: { color: "black" } }}
               InputProps={{ style: { color: "black" } }}
               sx={{
+                width: "17vw",
+                height: "10vh",
                 "& label.Mui-focused": { color: "black" },
                 "& .MuiInput-underline:after": { borderBottomColor: "black" },
                 "& .MuiInput-underline:before": { borderBottomColor: "black" },
-                width: "17vw", height: "10vh",
                 "@media (orientation: portrait)": { 
                   width: "40vw", 
                 }
@@ -142,6 +141,7 @@ function Signin() {
               type="password"
               size="small"
               id="password-input"
+              className="mt-2"
               label={intl.formatMessage({ id: "login.input.password" })}
               name="password"
               variant="standard"
@@ -149,10 +149,11 @@ function Signin() {
               InputLabelProps={{ style: { color: "black" } }}
               InputProps={{ style: { color: "black" } }}
               sx={{
+                width: "17vw",
+                height: "10vh",
                 "& .Mui-focused": { color: "black" },
                 "& .MuiInput-underline:after": { borderBottomColor: "black" },
                 "& .MuiInput-underline:before": { borderBottomColor: "black" },
-                width: "17vw", height: "10vh", marginTop: 2,
                 "@media (orientation: portrait)": { 
                   width: "40vw",
                   marginTop: 0
@@ -161,21 +162,22 @@ function Signin() {
             />
             <Button
               id="buttonLogin"
+              className="bg-green-600 rounded-3xl"
               type="submit"
               size="small"
               variant="outlined"
               sx={{
+                width: "10vw",
+                height: "5vh",
                 color: "white",
-                borderColor: 'green',
+                backgroundColor: "rgb(22 163 74)",
                 borderRadius: 20,
-                backgroundColor: 'green !important',
+                borderColor: "transparent",
                 "&:hover": {
                   color: "white",
                   backgroundColor: 'green',
                   borderColor: 'green',
                 },
-                width: "10vw",
-                 height: "5vh",
                  fontSize: {
                   xs: 8, 
                   sm: 10,

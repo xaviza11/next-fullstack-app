@@ -33,11 +33,11 @@ function Navbar() {
           </li>
         </>
       )}
-      <li className="px-3 py-1 text-sm sm:text-xs">
+      <li className=" py-1 text-sm sm:text-xs">
         <Link href="/about">{intl.formatMessage({ id: 'navbar.about' })}</Link>
       </li>
       {session && (
-        <li className="px-3 py-1 text-sm sm:text-xs">
+        <li className="py-1 text-sm sm:text-xs">
           <Link href="/dashboard/profile">{(session.user as unknown as Session['user']).fullname}</Link>
         </li>
       )}
