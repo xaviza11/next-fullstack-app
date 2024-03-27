@@ -104,7 +104,7 @@ function Signup() {
       )}
       <div className="flex items-center justify-center flex-grow">
         <Box
-          id="formLogin"
+          id="formRegister"
           className="flex flex-col justify-center items-center bg-white bg-opacity-25 py-10 rounded-xl h-[65vh]"
           component="form"
           onSubmit={handleSubmit}
