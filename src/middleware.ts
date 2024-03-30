@@ -1,3 +1,14 @@
-export { default } from "next-auth/middleware";
+import { NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
+import jwtVerifier from './app/api/utils/jwtVerifier';
 
-export const config = { matcher: ["/", "/dashboard/:path*"] };
+export function middleware(request: NextRequest) {
+
+  const cookie = request.cookies.get("token")
+
+ if (cookie === undefined) return NextResponse.redirect(new URL('/pages/login', request.url))
+}
+
+export const config = {
+  matcher:[ '/dashboard/:path*',]
+}

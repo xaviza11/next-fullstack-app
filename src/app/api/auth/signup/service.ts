@@ -14,17 +14,9 @@ export async function signupService({ fullname, email, password, language }: { f
   const isEmailValid = validateEmail(email, languageSelected);
   const isValidName = validateName(fullname, languageSelected)
 
-  if (!isValidName.success) {
-    throw { message: isValidName.message, status: 400};
-  }
-
-  if (!isPasswordValid.success) {
-    throw { message: isPasswordValid.message, status: 400 };
-  }
-
-  if (!isEmailValid.success) {
-    throw { message: isEmailValid.message, status: 400 };
-  }
+  if (!isValidName.success) throw { message: isValidName.message, status: 400};
+  if (!isPasswordValid.success) throw { message: isPasswordValid.message, status: 400 };
+  if (!isEmailValid.success) throw { message: isEmailValid.message, status: 400 };
 
   const userFound = await User.findOne({ email });
   if (userFound) {

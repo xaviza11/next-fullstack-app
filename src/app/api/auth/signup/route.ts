@@ -1,4 +1,3 @@
-
 import { signupService } from './service';
 
 export async function POST(request: Request) {

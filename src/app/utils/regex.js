@@ -1,4 +1,3 @@
-
 export function validateEmail(email, language) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!regex.test(email)) return { success: false, message: language.invalidEmail };
@@ -20,3 +19,7 @@ export function validateName(name, language) {
   return { success: true, message: language.validName};
 }
 
+export function validateFullRoute(route, language) {  
+  if(!/^\s*(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(\d+)\s*(?:,|$)\s*/.test(route)) return {success: false, message: language.fullRouteInvalidFormat}
+  return {success: true, message: language.validFullRoute}
+}

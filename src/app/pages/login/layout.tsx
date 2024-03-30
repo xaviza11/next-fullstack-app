@@ -1,13 +1,13 @@
 import Navbar from "@/components/Navbar";
 import React from "react";
-import background from "../assets/img/double-decker-2795557_1920.jpg";
+import background from "../../assets/img/double-decker-2795557_1920.jpg";
 import Image from "next/image";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-const RegisterLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+const LoginLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       <Navbar />
@@ -23,4 +23,4 @@ const RegisterLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   );
 };
 
-export default RegisterLayout;
+export default LoginLayout;

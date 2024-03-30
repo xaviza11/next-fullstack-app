@@ -18,10 +18,9 @@ const CustomAlert = ({ status, message }: CustomAlert) => {
   };
 
   useEffect(() => {
-    console.log(status)
     setTimeout(() => {
       dispatch(toggleAlert(false));
-    }, 2000);
+    }, 2000)
   });
 
   const textColor = "text-white";

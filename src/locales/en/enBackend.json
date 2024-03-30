@@ -15,5 +15,9 @@
     "emailValid": "Email is valid",
     "passwordNoSpaces": "The password can not contain spaces",
     "passwordNotSpecial": "Password can not contain special characters",
-    "userDeletedSuccessfully": "User has been deleted"
+    "userDeletedSuccessfully": "User has been deleted",
+    "fullRouteInvalidFormat": "Full Route has not valid format",
+    "validFullRoute": "Full Route is valid",
+    "fullRouteCreated": "Full Route has been created",
+    "badPassword": "The password is wrong"
 }

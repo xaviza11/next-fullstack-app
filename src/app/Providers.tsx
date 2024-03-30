@@ -1,8 +1,6 @@
 "use client";
-
-import { SessionProvider } from "next-auth/react";
-import {IntlProvider, FormattedMessage, FormattedNumber, useIntl} from 'react-intl'
-import {es, en} from '@/locales/index'
+import {IntlProvider} from 'react-intl'
+import {en} from '@/locales/index'
 import { Provider } from "react-redux";
 import store from "../../store";
 
@@ -11,5 +9,5 @@ interface Props {
 }
 
 export default function Providers({ children }: Props) {
-  return <SessionProvider><Provider store={store}><IntlProvider locale="en" messages={en}>{children}</IntlProvider></Provider></SessionProvider>;
+  return <Provider store={store}><IntlProvider locale="en" messages={en}>{children}</IntlProvider></Provider>
 }

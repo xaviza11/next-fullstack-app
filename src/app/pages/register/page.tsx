@@ -1,14 +1,17 @@
 "use client";
 import { FormEvent, useState } from "react";
 import axios, { AxiosError } from "axios";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useIntl } from "react-intl";
-import { validateEmail, validatePassword, validateName } from "../utils/regex";
+import {
+  validateEmail,
+  validatePassword,
+  validateName,
+} from "../../utils/regex";
 import CustomAlert from "@/components/CustomAlert";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleAlert } from "../../../store/actions";
-import routerLanguage from "../api/utils/routerLanguage";
+import { toggleAlert } from "../../../../store/actions";
+import routerLanguage from "../../api/utils/routerLanguage";
 import { Box, TextField, Button } from "@mui/material";
 
 function Signup() {
@@ -16,8 +19,9 @@ function Signup() {
   const [statusAlert, setStatusAlert] = useState<
     "success" | "warning" | "error"
   >("warning");
+
   const isAlertOpen = useSelector(
-    (state: { isAlertOpen: any }) => state.isAlertOpen
+    (state: { isAlertOpen: boolean }) => state.isAlertOpen
   );
 
   const router = useRouter();
@@ -63,37 +67,44 @@ function Signup() {
     }
 
     try {
-      const signupResponse: any = await axios.post("/api/auth/signup", {
+      await axios.post("/api/auth/signup", {
         email: formData.get("email"),
         password: formData.get("password"),
         fullname: formData.get("fullname"),
         language: intl.formatMessage({ id: "currentLanguage" }),
       });
 
-      const res: any = await signIn("credentials", {
-        email: signupResponse.data.email,
+      const loginResponse = await axios.post("/api/auth/authenticate", {
+        email: formData.get("email"),
         password: formData.get("password"),
         redirect: false,
         language: intl.formatMessage({ id: "currentLanguage" }),
       });
 
-      if (res?.ok) return router.push("/");
-
-      if (res?.error) {
+      if (loginResponse.data.res === 'success') {
+        return router.push("/");
+      } else {
         setStatusAlert("warning");
-        setMessageAlert(res.response.data.message);
+        setMessageAlert(
+          loginResponse.data.message || "An unexpected error occurred"
+        );
         dispatch(toggleAlert(true));
       }
     } catch (error: any) {
-      if (error?.response?.data?.message) {
-        setStatusAlert("warning");
-        setMessageAlert(error.response.data.message);
-        dispatch(toggleAlert(true));
-      } else {
-        setStatusAlert("warning");
-        setMessageAlert(error.message);
-        dispatch(toggleAlert(true));
+      let errorMessage = error;
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        errorMessage = error.response.data.message;
+      } else if (error.message) {
+        errorMessage = error.message;
       }
+
+      setStatusAlert("warning");
+      setMessageAlert(errorMessage);
+      dispatch(toggleAlert(true));
     }
   };
 
@@ -111,7 +122,7 @@ function Signup() {
           sx={{
             marginLeft: "50vw",
             width: "26vw",
-            animation: 'change-shadow 1s ease-in-out infinite',
+            animation: "change-shadow 1s ease-in-out infinite",
             transition: "box-shadow 0.5s ease-in-out",
             boxShadow: "0px 2px 25px green",
             "@keyframes change-shadow": {
@@ -125,10 +136,10 @@ function Signup() {
                 boxShadow: "0px 2px 25px green",
               },
             },
-            "@media (orientation: portrait)": { 
-              width: "70vw", 
+            "@media (orientation: portrait)": {
+              width: "70vw",
               marginLeft: 0,
-            }
+            },
           }}
           noValidate
           autoComplete="off"
@@ -153,10 +164,10 @@ function Signup() {
               "& .Mui-focused": { color: "black" },
               "& .MuiInput-underline:after": { borderBottomColor: "black" },
               "& .MuiInput-underline:before": { borderBottomColor: "black" },
-              "@media (orientation: portrait)": { 
+              "@media (orientation: portrait)": {
                 width: "40vw",
-                marginTop: 0
-              }
+                marginTop: 0,
+              },
             }}
           />
 
@@ -176,9 +187,9 @@ function Signup() {
               "& label.Mui-focused": { color: "black" },
               "& .MuiInput-underline:after": { borderBottomColor: "black" },
               "& .MuiInput-underline:before": { borderBottomColor: "black" },
-              "@media (orientation: portrait)": { 
-                width: "40vw", 
-              }
+              "@media (orientation: portrait)": {
+                width: "40vw",
+              },
             }}
           />
 
@@ -198,10 +209,10 @@ function Signup() {
               "& .Mui-focused": { color: "black" },
               "& .MuiInput-underline:after": { borderBottomColor: "black" },
               "& .MuiInput-underline:before": { borderBottomColor: "black" },
-              "@media (orientation: portrait)": { 
+              "@media (orientation: portrait)": {
                 width: "40vw",
-                marginTop: 0
-              }
+                marginTop: 0,
+              },
             }}
           />
 
@@ -220,23 +231,23 @@ function Signup() {
               borderColor: "transparent",
               "&:hover": {
                 color: "white",
-                backgroundColor: 'green',
-                borderColor: 'green',
+                backgroundColor: "green",
+                borderColor: "green",
               },
-               fontSize: {
-                xs: 8, 
+              fontSize: {
+                xs: 8,
                 sm: 10,
                 md: 15,
               },
               marginTop: {
                 xs: 0,
                 sm: 3,
-                md: 3
+                md: 3,
               },
-              "@media (orientation: portrait)": { 
-                width: "30vw", 
-                fontSize: 10
-              }
+              "@media (orientation: portrait)": {
+                width: "30vw",
+                fontSize: 10,
+              },
             }}
           >
             {" "}
