@@ -19,5 +19,6 @@
     "fullRouteInvalidFormat": "Full Route has not valid format",
     "validFullRoute": "Full Route is valid",
     "fullRouteCreated": "Full Route has been created",
-    "badPassword": "The password is wrong"
+    "badPassword": "The password is wrong",
+    "invalidCoordinates": "The coordinates of the points are invalid"
 }

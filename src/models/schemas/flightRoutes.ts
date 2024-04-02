@@ -1,12 +1,9 @@
 import { Schema, model, models } from "mongoose";
 
 const OwnerSchema = new Schema({
-  email: {
-    type: String,
-    required: true
-  },
   id: {
     type: Schema.Types.ObjectId,
+    ref: 'Users',
     required: true
   },
   name: {
@@ -26,7 +23,7 @@ const VotesSchema = new Schema({
   }
 });
 
-const UserSchema = new Schema({
+const FlightRoutesSchema = new Schema({
   departure: {
     type: String,
     unique: true,
@@ -41,7 +38,7 @@ const UserSchema = new Schema({
     required: true
   },
   placeMarks: {
-    type: Map,
+    type: Schema.Types.Mixed,
     of: String,
     required: true
   },
@@ -57,7 +54,4 @@ const UserSchema = new Schema({
   }
 })
 
-
-const CustomRoute = models.Routes || model("Route", UserSchema);
-
-export default CustomRoute;
+export default FlightRoutesSchema;

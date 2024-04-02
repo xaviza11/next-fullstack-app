@@ -9,10 +9,10 @@
     "login.button.signin": "Log In",
 
     "register.signup": "Sign Up",
-    "register.fullName": "Full Name",
+    "register.name": "Full Name",
     "register.password": "Password",
     "register.email": "Email",
-    "register.input.fullName": "Enter your Full Name",
+    "register.input.name": "Enter your Full Name",
     "register.input.email": "Enter your Email",
     "register.input.password": "Enter your Password",
     "register.button.signup": "Register",

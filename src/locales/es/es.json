@@ -9,10 +9,10 @@
     "login.button.signin": "Iniciar Sesión",
 
     "register.signup": "Registrarse",
-    "register.fullName": "Nombre Completo",
+    "register.name": "Nombre Completo",
     "register.password": "Contraseña",
     "register.email": "Correo Electrónico",
-    "register.input.fullName": "Introduce tu Nombre Completo",
+    "register.input.name": "Introduce tu Nombre Completo",
     "register.input.email": "Introduce tu Correo Electrónico",
     "register.input.password": "Introduce tu Contraseña",
     "register.button.signup": "Registrarse",

@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import User from '@/models/user';
+import {Users} from '@/models/index';
 import { validatePassword, validateEmail } from '@/app/utils/regex';
 import routerLanguage from '../../utils/routerLanguage';
 import { connectDB } from "@/libs/mongodb";
@@ -27,7 +27,7 @@ export async function authenticate(credentials: Credentials) {
   }
 
   await connectDB();
-  const userFound = await User.findOne({email: credentials?.email}).select("+password");
+  const userFound = await Users.findOne({email: credentials?.email}).select("+password");
 
   if (!userFound) throw {message: languageSelected.userNotExist, status: 409};
 
@@ -36,7 +36,7 @@ export async function authenticate(credentials: Credentials) {
   if (!passwordMatch) throw {message: languageSelected.badPassword, status: 401};
 
   const userId = userFound._id
-  const userName = userFound.fullname
+  const userName = userFound.name
 
   return { status: 200, message: languageSelected.authSuccess, data: {userId, userName} };
 }

@@ -1,5 +1,5 @@
 import { connectDB } from "@/libs/mongodb";
-import User from "@/models/user";
+import {Users} from '@/models/index';
 import bcrypt from "bcryptjs";
 import { validateEmail, validatePassword } from '@/app/utils/regex';
 import routerLanguage from '../../utils/routerLanguage'
@@ -16,7 +16,7 @@ export async function deleteUser({ userId, password, language }: { userId: strin
     throw { message: isPasswordValid.message, status: 400 };
   }
 
-  const userFound = await User.findById(userId);
+  const userFound = await Users.findById(userId);
 
   if (!userFound) {
     throw { message: languageSelected?.userNotExist, status: 404 };
@@ -27,7 +27,7 @@ export async function deleteUser({ userId, password, language }: { userId: strin
     throw { message: languageSelected?.badPassword, status: 401 };
   }
 
-  await User.deleteOne({ _id: userFound._id });
+  await Users.deleteOne({ _id: userFound._id });
 
   return {
     status: 200,

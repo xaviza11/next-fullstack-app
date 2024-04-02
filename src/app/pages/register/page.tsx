@@ -35,7 +35,7 @@ function Signup() {
 
     const email = formData.get("email");
     const password = formData.get("password");
-    const fullname = formData.get("fullname");
+    const name = formData.get("name");
 
     const language = routerLanguage(
       intl.formatMessage({ id: "currentLanguage" })
@@ -43,7 +43,7 @@ function Signup() {
 
     const isValidEmail = validateEmail(email, language);
     const isValidPassword = validatePassword(password, language);
-    const isValidName = validateName(fullname, language);
+    const isValidName = validateName(name, language);
 
     if (!isValidEmail.success) {
       setMessageAlert(isValidEmail.message);
@@ -70,7 +70,7 @@ function Signup() {
       await axios.post("/api/auth/signup", {
         email: formData.get("email"),
         password: formData.get("password"),
-        fullname: formData.get("fullname"),
+        name: formData.get("name"),
         language: intl.formatMessage({ id: "currentLanguage" }),
       });
 
@@ -152,8 +152,8 @@ function Signup() {
             size="small"
             type="text"
             id="email-input"
-            label={intl.formatMessage({ id: "register.input.fullName" })}
-            name="fullname"
+            label={intl.formatMessage({ id: "register.input.name" })}
+            name="name"
             variant="standard"
             fullWidth
             InputLabelProps={{ style: { color: "black" } }}

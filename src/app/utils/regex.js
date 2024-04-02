@@ -23,3 +23,8 @@ export function validateFullRoute(route, language) {
   if(!/^\s*(-?\d+\.\d+)\s+(-?\d+\.\d+)\s+(\d+)\s*(?:,|$)\s*/.test(route)) return {success: false, message: language.fullRouteInvalidFormat}
   return {success: true, message: language.validFullRoute}
 }
+
+export function validateCoordinates(coordinates){
+  const routeRegex = /^-?\d{1,3}\.\d{6}\s-?\d{1,3}\.\d{6}$/;
+  return routeRegex.test(coordinates)
+}
