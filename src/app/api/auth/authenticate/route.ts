@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     if (!JWT_SECRET) throw new Error('JWT_SECRET is not defined in environment variables.');
 
     const secretKey = JWT_SECRET;
-    const tokenPayload = { sub: result?.data?.userId.toString(), name: result?.data?.userName };
+    const tokenPayload = { sub: result?.data?.userId.toString(), name: result?.data?.userName, language: result?.data?.language };
     const token = jwt.sign(tokenPayload, secretKey, { expiresIn: JWT_EXPIRATION });
     const responseData = {
       res: 'success',

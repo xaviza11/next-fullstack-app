@@ -20,5 +20,7 @@
     "validFullRoute": "Full Route is valid",
     "fullRouteCreated": "Full Route has been created",
     "badPassword": "The password is wrong",
-    "invalidCoordinates": "The coordinates of the points are invalid"
+    "invalidCoordinates": "The coordinates of the points are invalid",
+    "routesFound": "The routes of the user have been found",
+    "notRoutesFound": "The search did not find any routes"
 }

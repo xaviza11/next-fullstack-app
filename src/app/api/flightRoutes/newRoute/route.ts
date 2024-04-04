@@ -21,14 +21,13 @@ export async function POST(request: Request) {
       });
     }
 
-    const token = tokenCookie.split('=')[1];
-
-    const userId = jwtVerifier(token)
+    const {userId, language} = jwtVerifier(tokenCookie)
 
     if(typeof userId !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
+    if(typeof language !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
 
-    const {departure, arrival, fullRoute, placeMarks, airCraft, isPublic, language } = await request.json();
-    const result = await newRoute({ departure, arrival, fullRoute, placeMarks, userId, airCraft, isPublic, language });
+    const {departure, arrival, fullRoute, placeMarks, airCraft, isPublic, departureCity, arrivalCity, distance } = await request.json();
+    const result = await newRoute({ departure, arrival, fullRoute, placeMarks, userId, airCraft, isPublic, departureCity, arrivalCity, distance , language });
     return new Response(JSON.stringify(result.data), { status: result.status, headers: { 'Content-Type': 'application/json' } });
   } catch (error:any) {
     return new Response(JSON.stringify({ message: error.message }), { status: error.status || 500, headers: { 'Content-Type': 'application/json' } });

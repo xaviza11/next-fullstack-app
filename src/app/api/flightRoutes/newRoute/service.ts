@@ -7,7 +7,7 @@ import routerLanguage from '../../utils/routerLanguage'
 import { validateFullRoute, validateCoordinates } from '@/app/utils/regex'
 import { models } from "mongoose";
 
-export async function newRoute({ departure, arrival, fullRoute, placeMarks, userId, airCraft, isPublic, language }: { departure: string, arrival: string, fullRoute: string, placeMarks: { [key: string]: string }, userId: string, airCraft: string, isPublic: boolean, language: string }) {
+export async function newRoute({ departure, arrival, fullRoute, placeMarks, userId, airCraft, isPublic, language, departureCity, arrivalCity, distance  }: { departure: string, arrival: string, fullRoute: string, placeMarks: { [key: string]: string }, userId: string, airCraft: string, isPublic: boolean, language: string, departureCity: string, arrivalCity: string, distance: number }) {
   await connectDB();
 
   const languageSelected = await routerLanguage(language);
@@ -35,7 +35,7 @@ export async function newRoute({ departure, arrival, fullRoute, placeMarks, user
 
   if (!isValidFullRoute.success) throw { message: isValidFullRoute.message, status: 400 }
 
-  const flightRoute = await FlightRoutes.create({ departure, arrival, fullRoute, placeMarks, owner: { id: userId, name: user.name }, airCraft, isPublic })
+  const flightRoute = await FlightRoutes.create({ departure, arrival, fullRoute, placeMarks, owner: { id: userId, name: user.name }, airCraft, isPublic, departureCity, arrivalCity, distance  })
 
   return {
     status: 200,

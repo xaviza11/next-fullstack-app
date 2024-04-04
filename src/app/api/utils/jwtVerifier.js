@@ -1,7 +1,10 @@
 const jwt = require('jsonwebtoken');
 
-function jwtVerifier(token) {
+function jwtVerifier(tokenCookie) {
   try {
+
+    const token = tokenCookie.split('token=')[1]
+
     const { JWT_SECRET } = process.env;
 
     if (!JWT_SECRET) {
@@ -10,9 +13,9 @@ function jwtVerifier(token) {
 
     const payload = jwt.verify(token, JWT_SECRET);
 
-    const { sub: userId } = payload;
+    const { sub: userId, language } = payload
 
-    return  userId ; 
+    return  {userId, language} ; 
   } catch (error) {
     console.error('Error verifying JWT:', error.message);
     return { error: 'Invalid token' }; 

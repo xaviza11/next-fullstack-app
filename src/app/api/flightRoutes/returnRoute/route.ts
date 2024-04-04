@@ -1,9 +1,8 @@
-import { deleteFlightRoute } from './service';
+import { returnRoute } from './service';
 import jwtVerifier from '../../utils/jwtVerifier';
 
 export async function POST(request: Request) {
   try {
-
     const cookieHeader = request.headers.get('Cookie');
 
     if (!cookieHeader || !cookieHeader.includes('token')) {
@@ -23,15 +22,13 @@ export async function POST(request: Request) {
     }
 
     const {userId, language} = jwtVerifier(tokenCookie)
+    const { flightRouteId } = await request.json();
 
     if(typeof userId !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
     if(typeof language !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
 
-    const {flightRouteId } = await request.json();
-
-
-    const result = await deleteFlightRoute({ userId, flightRouteId, language });
-    return new Response(JSON.stringify({message: result.message}), { status: result.status, headers: { 'Content-Type': 'application/json' } });
+    const result = await returnRoute({flightRouteId, language });
+    return new Response(JSON.stringify(result.data), { status: result.status, headers: { 'Content-Type': 'application/json' } });
   } catch (error:any) {
     return new Response(JSON.stringify({ message: error.message }), { status: error.status || 500, headers: { 'Content-Type': 'application/json' } });
   }

@@ -37,6 +37,7 @@ export async function authenticate(credentials: Credentials) {
 
   const userId = userFound._id
   const userName = userFound.name
+  const language = userFound.language
 
-  return { status: 200, message: languageSelected.authSuccess, data: {userId, userName} };
+  return { status: 200, message: languageSelected.authSuccess, data: {userId, userName, language} };
 }

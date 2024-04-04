@@ -14,6 +14,10 @@ const UsersSchema = new Schema(
     name: {
       type: String,
       required: true
+    },
+    language: {
+      type: String,
+      default: 'en'
     }
   },
   {

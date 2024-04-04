@@ -24,9 +24,20 @@ const VotesSchema = new Schema({
 });
 
 const FlightRoutesSchema = new Schema({
+  departureCity: {
+    type: String,
+    required: true
+  },
+  arrivalCity: {
+    type: String,
+    required: true
+  },
+  distance: {
+    type: Number,
+    required: true
+  },
   departure: {
     type: String,
-    unique: true,
     required: true
   },
   arrival: {

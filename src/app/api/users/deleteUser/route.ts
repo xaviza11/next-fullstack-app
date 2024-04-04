@@ -21,20 +21,12 @@ export async function POST(request: Request) {
       });
     }
 
-    const token = tokenCookie.split('=')[1];
-
-    if (!token) {
-      return new Response(JSON.stringify({ message: "Invalid token value" }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
-    }
-
-    const userId = jwtVerifier(token);
+    const {userId, language} = jwtVerifier(tokenCookie);
 
     if(typeof userId !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
+    if(typeof language !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
 
-    const { password, language } = await request.json();
+    const { password } = await request.json();
 
     const result = await deleteUser({userId, password, language});
 
