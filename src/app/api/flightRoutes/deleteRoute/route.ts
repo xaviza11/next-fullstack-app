@@ -23,7 +23,6 @@ export async function POST(request: Request) {
     }
 
     const {userId, language} = jwtVerifier(tokenCookie)
-
     if(typeof userId !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
     if(typeof language !== 'string') return new Response(JSON.stringify({ message: 'error on jwt' }))
 
