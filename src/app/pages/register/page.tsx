@@ -151,7 +151,6 @@ function Signup() {
           <TextField
             size="small"
             type="text"
-            id="email-input"
             label={intl.formatMessage({ id: "register.input.name" })}
             name="name"
             variant="standard"

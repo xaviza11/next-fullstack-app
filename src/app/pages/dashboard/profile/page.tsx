@@ -27,7 +27,7 @@ function ProfilePage() {
 
   return (
     <div>
-      <h1>Profile</h1>
+      <h2>Profile</h2>
 
       <button
         className="bg-zinc-800 px-4 py-2 block mb-2"
